@@ -1,4 +1,4 @@
-export const _paramsValidator = params => {
+export const paramsValidator = params => {
   const requiredParams = ['name', 'email', 'telephone']
   for (const requiredParam of requiredParams) {
     if (!params[requiredParam]) {
