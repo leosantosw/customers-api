@@ -16,8 +16,6 @@ export const handler = async event => {
 
     const params = paramsValidator({ name, email, telephone, coordinate_x: coordinateX, coordinate_y: coordinateY })
 
-    console.log('[INFO] create customer:', params)
-
     if (params?.error) {
       console.error('[ERROR] create customer:', params)
       return responses.badRequest(params)
