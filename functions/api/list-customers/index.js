@@ -14,18 +14,18 @@ export const handler = async event => {
   console.info('[INFO] email string parameter:', email)
   console.info('[INFO] telephone string parameter:', telephone)
 
-  const customer = await customerRepository.list({
+  const customers = await customerRepository.list({
     name,
     email,
     telephone,
   })
 
-  if (customer.length === 0) {
+  if (customers.length === 0) {
     return responses.notFound({
       error: 'not_found',
       message: 'customer not found',
     })
   }
 
-  return responses.ok(customer)
+  return responses.ok(customers)
 }
