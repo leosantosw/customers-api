@@ -10,11 +10,15 @@ export const handler = async event => {
       name = null,
       email = null,
       telephone = null,
+      coordinate_x: coordinateX = null,
+      coordinate_y: coordinateY = null,
     } = JSON.parse(event.body)
 
-    const params = paramsValidator({ name, email, telephone })
+    const params = paramsValidator({ name, email, telephone, coordinate_x: coordinateX, coordinate_y: coordinateY })
 
-    if (params.error) {
+    console.log('[INFO] create customer:', params)
+
+    if (params?.error) {
       console.error('[ERROR] create customer:', params)
       return responses.badRequest(params)
     }
@@ -22,11 +26,14 @@ export const handler = async event => {
     console.info('[INFO] name string parameter:', name)
     console.info('[INFO] email string parameter:', email)
     console.info('[INFO] telephone string parameter:', telephone)
+    console.info('[INFO] coordinates object parameter:', { coordinateX, coordinateY })
 
     const customer = await customerRepository.create({
       name,
       email,
       telephone,
+      coordinateX,
+      coordinateY,
     })
 
     return {
