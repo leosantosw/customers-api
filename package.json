@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "./scripts/start-local.sh"
+    "dev": "./scripts/start-local.sh",
+    "lint": "eslint ."
   },
   "devDependencies": {
     "eslint": "8.32.0",
