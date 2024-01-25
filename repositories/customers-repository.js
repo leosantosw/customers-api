@@ -3,7 +3,7 @@ import { DatabaseClient } from '../lib/database-client.js'
 const { client } = new DatabaseClient()
 
 export class CustomerRepository {
-  async list (filters) {
+  async list (filters = {}) {
     const { query, values } = this.buildListQuery(filters)
     const { rows: results } = await client.query({ text: query, values })
     return results
