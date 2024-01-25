@@ -59,6 +59,9 @@ This endpoint enables clients to create a new customer.
 
 Note: Make sure you have Serverless Framework installed (`npm install -g serverless`) and configured with your cloud provider credentials.
 
+### Database relations
+<img width="598" alt="Database relations" src="https://github.com/leosantosw/customers-api/assets/92169538/37f7f3fd-c3d0-4170-a9c3-3c83aa1a337d">
+
 
 ### Project structure
 
