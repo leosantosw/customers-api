@@ -33,6 +33,7 @@ custom:
 functions:
   - ${file(./infra/lambda/list-customers.yml)}
   - ${file(./infra/lambda/create-customer.yml)}
+  - ${file(./infra/lambda/nearby-customers.yml)}
 
 resources:
   - ${file(./infra/api-gateway/auth-response.yml)}

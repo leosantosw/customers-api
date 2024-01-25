@@ -6,6 +6,10 @@
     "dev": "./scripts/start-local.sh",
     "lint": "eslint ."
   },
+  "dependencies": {
+    "pg": "8.11.3",
+    "haversine-distance": "1.2.1"
+  },
   "devDependencies": {
     "eslint": "8.32.0",
     "eslint-config-standard": "17.0.0",
@@ -14,8 +18,5 @@
     "eslint-plugin-promise": "6.1.1",
     "serverless-offline": "12.0.4",
     "serverless-prune-plugin": "2.0.1"
-  },
-  "dependencies": {
-    "pg": "8.11.3"
   }
 }
