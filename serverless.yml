@@ -1,0 +1,51 @@
+service: customer-api
+
+plugins:
+  - serverless-prune-plugin
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  profile: lambda-${sls:stage}
+  stage: ${opt:stage, 'staging'}
+  environment: ${file(./env.yml)}
+  deploymentPrefix: ${sls:stage}
+  deploymentBucket:
+    name: br.com.customer.serverless.deploys
+  apiGateway:
+    apiKeys: customer-api-${sls:stage}
+  tracing:
+    apiGateway: true
+    lambda: true
+
+custom:
+  prune:
+    automatic: true
+    number: 3
+  serverless-offline:
+    noPrependStageInUrl: true
+    useWorkerThreads: true
+    apiKey: ZwQI78EwIO86H8EZhJC7z4qww1cLolB06rIvIMPu
+    prefix: api
+
+functions:
+  - ${file(./infra/lambda/list-customers.yml)}
+  - ${file(./infra/lambda/create-customer.yml)}
+
+resources:
+  - ${file(./infra/api-gateway/auth-response.yml)}
+
+package:
+  individually: true
+  patterns:
+    - '!package-lock.json'
+    - '!.editorconfig'
+    - '!.vscode/**'
+    - '!.github/**'
+    - '!.git/**'
+    - '!.nvmrc'
+    - '!.npmrc'
+    - '!README.md'
+    - '!env.yml'
