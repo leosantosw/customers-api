@@ -1,0 +1,8 @@
+create-customer:
+  handler: functions/api/create-customer/index.handler
+  events:
+    - http:
+        path: /customers
+        method: POST
+        cors: ${file(./infra/api-gateway/cors.yml)}
+        private: true
